@@ -20,7 +20,7 @@ This repository contains the code and pre-trained models for our EMNLP'22 paper 
 
 We propose the problem of continually extending an LM by incrementally post-train the LM with a sequence of unlabeled domain corpora to expand its knowledge without forgetting its previous skills. Under the goal of improving few-shot end-task learning in these domains, we propose a system called CPT (Continual Post-Training), which to our knowledge, is the first continual post-training system. Experimental results verify its effectiveness. And the following figure is an illustration of our model.
 
-![](figures/model.pdf)
+![](figures/model.png)
 
 ## Use CPT with Huggingface
 
