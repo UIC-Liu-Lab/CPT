@@ -5,7 +5,7 @@ do
   for task in 0 1 2 3;
   do
     CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES python -m torch.distributed.launch --nproc_per_node 2 --master_port ${port} --use_env posttrain.py \
-    --per_device_train_batch_size 25 \
+    --per_device_train_batch_size 24 \
     --fp16 \
     --max_seq_length 164 \
     --idrandom ${idrandom} \
