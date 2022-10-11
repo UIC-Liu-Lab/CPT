@@ -84,7 +84,7 @@ pip install -r requirements.txt
 
 ### Data
 
-Before training and evaluation, please download the dataset from this [Google Drive link]() and save them in the `./data` directory. 
+Before training and evaluation, please download the dataset from this [Google Drive link](https://drive.google.com/drive/folders/1-8Ly4Jk12LHnkMKnxhuXieVNMA9cyORQ?usp=sharing) and save them in the `./data` directory. 
 
 ### Post-Training
 
