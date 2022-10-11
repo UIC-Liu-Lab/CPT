@@ -1,6 +1,6 @@
 ## Continual Training of Language Models for Few-Shot Learning
 
-This repository contains the code and pre-trained models for our EMNLP'22 paper Continual Training of Language Models for Few-Shot Learning by Zixuan Ke, Haowei Lin, Yijia Shao, Hu Xu, Lei Shu, and Bing Liu.
+This repository contains the code and pre-trained models for our EMNLP'22 paper Continual Training of Language Models for Few-Shot Learning by <a href="https://vincent950129.github.io/"> Zixuan Ke</a>, <a href="https://linhaowei1.github.io/">Haowei Lin</a>, <a href="https://shaoyijia.github.io/">Yijia Shao</a>, <a href="https://howardhsu.github.io/">Hu Xu</a>, <a href="https://leishu02.github.io/">Lei Shu</a>, and <a href="https://www.cs.uic.edu/~liub/">Bing Liu</a>.
 
 
 ## Quick Links
