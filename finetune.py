@@ -73,10 +73,6 @@ def main():
     if 'multi' in args.dataset_name:
         args.problem_type = 'multi_label_classification'
 
-    # Handle the repository creation
-    if accelerator.is_main_process:
-        if args.output_dir is not None:
-            os.makedirs(args.output_dir, exist_ok=True)
     accelerator.wait_for_everyone()
 
     # Get the datasets and process the data.
