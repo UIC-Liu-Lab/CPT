@@ -1,0 +1,9 @@
+torch==1.7.0
+torchvision==0.8.0
+transformers==4.11.3
+adapter-transformers==2.2.0
+sklearn
+accelerate==0.5.1
+datasets
+tensorboard
+jsonlines

@@ -1,0 +1,11 @@
+/misc
+/.idea
+*ckpt
+__pycache__
+exp_*.sh
+*.log
+ckpt*
+datasets
+temp_*
+outputs
+data
