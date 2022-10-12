@@ -6,7 +6,6 @@ This repository contains the code and pre-trained models for our EMNLP'22 paper 
 ## Quick Links
 
   - [Overview](#overview)
-  - [Getting Started](#getting-started)
   - [Requirements](#Requirements)
   - [Use CPT with Huggingface](#use-cpt-with-huggingface)
   - [Train CPT](#train-cpt)
