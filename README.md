@@ -1,15 +1,15 @@
 # Continual Training of Language Models for Few-Shot Learning
 
-This repository contains the code and pre-trained models for our EMNLP'22 paper Continual Training of Language Models for Few-Shot Learning by <a href="https://vincent950129.github.io/"> Zixuan Ke</a>, <a href="https://linhaowei1.github.io/">Haowei Lin</a>, <a href="https://shaoyijia.github.io/">Yijia Shao</a>, <a href="https://howardhsu.github.io/">Hu Xu</a>, <a href="https://leishu02.github.io/">Lei Shu</a>, and <a href="https://www.cs.uic.edu/~liub/">Bing Liu</a>.
+This repository contains the code and pre-trained models for our EMNLP'22 paper [Continual Training of Language Models for Few-Shot Learning](https://arxiv.org/abs/2210.05549) by <a href="https://vincent950129.github.io/"> Zixuan Ke</a>, <a href="https://linhaowei1.github.io/">Haowei Lin</a>, <a href="https://shaoyijia.github.io/">Yijia Shao</a>, <a href="https://howardhsu.github.io/">Hu Xu</a>, <a href="https://leishu02.github.io/">Lei Shu</a>, and <a href="https://www.cs.uic.edu/~liub/">Bing Liu</a>.
 
 
 ## Quick Links
 
   - [Overview](#overview)
   - [Getting Started](#getting-started)
+  - [Requirements](#Requirements)
   - [Use CPT with Huggingface](#use-cpt-with-huggingface)
   - [Train CPT](#train-cpt)
-    - [Requirements](#requirements)
     - [Data](#data)
     - [Training](#training)
     - [Evaluation](#evaluation)
@@ -22,9 +22,31 @@ We propose the problem of continually extending an LM by incrementally post-trai
 
 ![](figures/model.png)
 
+## Requirements
+
+First, install PyTorch by following the instructions from [the official website](https://pytorch.org). To faithfully reproduce our results, please use the correct `1.7.0` version corresponding to your platforms/CUDA versions. PyTorch version higher than `1.7.0` should also work. For example, if you use Linux and **CUDA11** ([how to check CUDA version](https://varhowto.com/check-cuda-version/)), install PyTorch by the following command,
+
+```bash
+pip install torch==1.7.0+cu110 -f https://download.pytorch.org/whl/torch_stable.html
+```
+
+If you instead use **CUDA** `<11` or **CPU**, install PyTorch by the following command,
+
+```bash
+pip install torch==1.7.0
+```
+
+
+Then run the following script to install the remaining dependencies,
+
+```bash
+pip install -r requirements.txt
+```
+
 ## Use CPT with Huggingface
 
 You can easily import our continually post-trained model with HuggingFace's `transformers`:
+
 ```python
 import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
@@ -49,6 +71,8 @@ smax = 400
 res = model(**inputs, return_dict=True, t=t, s=smax)
 ```
 
+**Attention**: Our model is based on `transformers==4.11.3` and `adapter-transformers==2.2.0`. Using them from other versions may casue some unexpected bugs.
+
 If you encounter any problem when directly loading the models by HuggingFace's API, you can also download the models manually from the [repo](https://huggingface.co/UIC-Liu-Lab/CPT/tree/main) and use `model = AutoModel.from_pretrained({PATH TO THE DOWNLOAD MODEL})`.
 
 Note: The post-trained weights you load contain un-trained classification heads. The post-training sequence is `Restaurant -> AI -> ACL -> AGNews`, you can use the downloaded weights to fine-tune the corresponding end-task. The results (MF1/Acc) will be consistent with follows.
@@ -60,27 +84,6 @@ Note: The post-trained weights you load contain un-trained classification heads.
 ## Train CPT
 
 In the following section, we describe how to train a CPT model by using our code.
-
-### Requirements
-
-First, install PyTorch by following the instructions from [the official website](https://pytorch.org). To faithfully reproduce our results, please use the correct `1.7.0` version corresponding to your platforms/CUDA versions. PyTorch version higher than `1.7.0` should also work. For example, if you use Linux and **CUDA11** ([how to check CUDA version](https://varhowto.com/check-cuda-version/)), install PyTorch by the following command,
-
-```bash
-pip install torch==1.7.0+cu110 -f https://download.pytorch.org/whl/torch_stable.html
-```
-
-If you instead use **CUDA** `<11` or **CPU**, install PyTorch by the following command,
-
-```bash
-pip install torch==1.7.0
-```
-
-
-Then run the following script to install the remaining dependencies,
-
-```bash
-pip install -r requirements.txt
-```
 
 ### Data
 
@@ -122,10 +125,10 @@ Once you finished post-train, come back to the root directory and simply run
 ```bash
 CUDA_VISIBLE_DEVICES=${your_cuda_device_id} bash scripts/finetune_cpt_unfreeze_parallel.sh
 ```
+
 Our codebase offers convenient tools for collecting experimental results and automatic scripts for continual learning. After the right execution, you are expected to get the results in the following format:
 
 ```
-
 └── seq0
     ├── seed111
     │   └── cpt_parallel_unfreeze
@@ -179,10 +182,10 @@ Arguments for the end-task fine-tuning script are as follows,
 * `--pt_task`: The id for the post-train task. e.g. `--pt_task 3` means using the model after continually post-trained on the four datasets. 
 * `ft_task`: The id for the fine-tuning task. e.g. `--ft_task 0` means doing fine-tuning on the first dataset.
 * `--idrandom`: choose the task sequence. See `./sequence` for more details.
-    * You can post-train CPT using other task sequences by modifying this argument.
+  * You can post-train CPT using other task sequences by modifying this argument.
 * `--pt_seed`: the seed used for post-training, used to find the right checkpoint dir of post-trained models.
 * `--unfreeze_lm`: whether to unfreeze the backbone (Roberta) when fine-tuning.
-* `--ffn_adapter_size`: The size of the adapters that are plugged into the FFN layer. See our paper for details.
+* `--ffn_adapter_size`: The size of the adapters that are plugged into the FFN layer. See our [paper](https://arxiv.org/abs/2210.05549) for details.
 * `--attn_adapter_size`: The size of the adapters that are plugged into the attention layer. See our paper for details.
 
 ## Bugs or questions?
@@ -191,4 +194,13 @@ If you have any questions related to the code or the paper, feel free to email [
 
 ## Citation
 
-Our paper will be released soon!
+Please cite our paper if you use CPT in your work:
+
+```bibtex
+@inproceedings{ke2022continual,
+   title={Continual Training of Language Models for Few-Shot Learning},
+   author={Ke, Zixuan and Lin, Haowei and Shao, Yijia and Xu, Hu and Shu, Lei, and Liu, Bing},
+   booktitle={Empirical Methods in Natural Language Processing (EMNLP)},
+   year={2022}
+}
+```
