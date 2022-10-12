@@ -43,6 +43,8 @@ Then run the following script to install the remaining dependencies,
 pip install -r requirements.txt
 ```
 
+**Attention**: Our model is based on `transformers==4.11.3` and `adapter-transformers==2.2.0`. Using them from other versions may cause some unexpected bugs.
+
 ## Use CPT with Huggingface
 
 You can easily import our continually post-trained model with HuggingFace's `transformers`:
@@ -70,8 +72,6 @@ smax = 400
 # Get the model output!
 res = model(**inputs, return_dict=True, t=t, s=smax)
 ```
-
-**Attention**: Our model is based on `transformers==4.11.3` and `adapter-transformers==2.2.0`. Using them from other versions may casue some unexpected bugs.
 
 If you encounter any problem when directly loading the models by HuggingFace's API, you can also download the models manually from the [repo](https://huggingface.co/UIC-Liu-Lab/CPT/tree/main) and use `model = AutoModel.from_pretrained({PATH TO THE DOWNLOAD MODEL})`.
 
