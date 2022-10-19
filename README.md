@@ -6,12 +6,12 @@ This repository contains the code and pre-trained models for our EMNLP'22 paper 
 ## Quick Links
 
   - [Overview](#overview)
-  - [Requirements](#Requirements)
+  - [Requirements](#requirements)
   - [Use CPT with Huggingface](#use-cpt-with-huggingface)
   - [Train CPT](#train-cpt)
     - [Data](#data)
-    - [Training](#training)
-    - [Evaluation](#evaluation)
+    - [Post-Training](#post-training)
+    - [End-Task Fine-tuning](#end-task-fine-tuning)
   - [Bugs or Questions?](#bugs-or-questions)
   - [Citation](#citation)
 
