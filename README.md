@@ -23,16 +23,16 @@ We propose the problem of continually extending an LM by incrementally post-trai
 
 ## Requirements
 
-First, install PyTorch by following the instructions from [the official website](https://pytorch.org). To faithfully reproduce our results, please use the correct `1.7.0` version corresponding to your platforms/CUDA versions. PyTorch version higher than `1.7.0` should also work. For example, if you use Linux and **CUDA11** ([how to check CUDA version](https://varhowto.com/check-cuda-version/)), install PyTorch by the following command,
+First, install PyTorch by following the instructions from [the official website](https://pytorch.org). To faithfully reproduce our results, please use the correct `1.5.1` version corresponding to your platforms/CUDA versions. PyTorch version higher than `1.5.1` should also work. For example, if you use Linux and **CUDA9.2** ([how to check CUDA version](https://varhowto.com/check-cuda-version/)), install PyTorch by the following command,
 
 ```bash
-pip install torch==1.7.0+cu110 -f https://download.pytorch.org/whl/torch_stable.html
+pip install torch==1.5.1+cu92 -f https://download.pytorch.org/whl/torch_stable.html
 ```
 
-If you instead use **CUDA** `<11` or **CPU**, install PyTorch by the following command,
+If you instead use **CUDA** `>10.2` or **CPU**, install PyTorch by the following command,
 
 ```bash
-pip install torch==1.7.0
+pip install torch==1.5.1
 ```
 
 
